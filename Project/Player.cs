@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 
-namespace CastleGrimtol.Project
+namespace GrimtolIncorporated.Project
 {
     public class Player : IPlayer
     {
         public List<Item> Inventory { get; set; }
+
     }
 }

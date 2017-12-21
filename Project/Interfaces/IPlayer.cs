@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CastleGrimtol.Project
+namespace GrimtolIncorporated.Project
 {
     public interface IPlayer
     {
