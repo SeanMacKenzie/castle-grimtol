@@ -19,15 +19,9 @@ namespace GrimtolIncorporated.Project
         {
             Name = name;
             Description = description;
+            Items = new List<Item>();
+            Exits = new Dictionary<string, Room>();
         }
 
-        // public void AddExit(string direction, Room room)
-        // {
-        //     if (!Exits.ContainsKey(direction))
-        //     {
-                
-        //     }
-
-        // }
     }
 }
