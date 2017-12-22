@@ -9,22 +9,27 @@ namespace GrimtolIncorporated
         {
             Console.Clear();
             Game Primary = new Game();
-            string Input = "";
-            int Selection = 0;
+
+            // int Selection = 0;
             bool Playing = true;
-            
+            Primary.Setup();
+
             while (Playing)
             {
-                Primary.Setup();
-                Input = Console.ReadLine();
-                if (Input == "quit")
+                Primary.Start();
+                string choice = Console.ReadLine();
+                if (choice == "quit" || choice == "QUIT")
                 {
                     Playing = false;
                     Primary.Reset();
                 }
-                else if (Input == "north")
+                else if (choice == "help" || choice == "HELP")
                 {
-                    
+
+                }
+                else
+                {
+                    Primary.HandleInput(choice);
                 }
 
             }
