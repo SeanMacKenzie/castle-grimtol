@@ -117,6 +117,36 @@ namespace GrimtolIncorporated.Project
 
                     }
                     break;
+                case "take":
+                case "TAKE":
+                    switch (option)
+                    {
+                        case "dagger":
+                        case "DAGGER":
+                            Take(dagger);
+                            break;
+                        case "chocolates":
+                        case "CHOCOLATES":
+                            Take(chocolates);
+                            break;
+                    }
+                    break;
+                case "use":
+                case "USE":
+                    break;
+                case "look":
+                case "LOOK":
+                    switch(option) {
+                        case "dagger":
+                        case "DAGGER":
+                            LookItem(dagger);
+                            break;
+                        case "chocolates":
+                        case "CHOCOLATES":
+                            LookItem(chocolates);
+                            break;
+                    }
+                    break;
             }
         }
 
@@ -150,6 +180,7 @@ namespace GrimtolIncorporated.Project
         public void Take(Item item)
         {
             CurrentPlayer.Inventory.Add(item);
+            Console.WriteLine($"You now have the {item}.");
         }
 
         public void UseItem(string itemName)
