@@ -4,7 +4,7 @@ namespace GrimtolIncorporated.Project
 {
     public class Player : IPlayer
     {
-        public List<Item> Inventory { get; set; }
+        public List<Item> Inventory { get; set; } = new List<Item>();
 
     }
 }

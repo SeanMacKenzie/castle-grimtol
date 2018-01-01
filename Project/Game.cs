@@ -6,20 +6,21 @@ namespace GrimtolIncorporated.Project
     public class Game : IGame
     {
 
-        public Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer { get; set; } = new Player();
         public Room CurrentRoom { get; set; }
 
 
         Room gChambers = new Room("Mr. Grimtol's Chambers", " Tapestries depicting the Dark Lord and his recent triumphs and victories adorn the walls. On the bench next to the door is a small ornate dagger. The only exit is to the south.");
         Room hallway1 = new Room("2nd Floor Hallway", "A long, poorly lit hallway, the Dark Lord's banners hanging from the high ceiling. At the end, to the south is a staircase that will lead to the lower floor. To the west is a storage closet and to the east is a door that reads 'Occupational Hypnotherapist.' The Dark Lord's chambers is to the north.");
-        Room sCloset = new Room("The Supply Closet", "You know this room well. Many times you've come here, shut the door, and cried quietly. It's probably not a good idea to stay here. Going ");
+        Room sCloset = new Room("The Supply Closet", "You know this room well. Many times you've come here, shut the door, and cried quietly. It's probably not a good idea to stay here. Turning around and going east will take you back to the hallway.");
         Room hypno = new Room("Occupational Hypnotherapist Office", "Dr. Swanson is sitting at his desk, almost as if he's been waiting for you or any other low-level employee who might wander through his door. Before you can resist him, he counts to 3 and snaps his fingers.");
         Room bRoom = new Room("The Break Room", "Breakroom");
         Room hallway2 = new Room("Hallway", "Another long hallway, this one only slightly brighter because of the large open gate at the north end. 3 gruff men are standing guard just inside. To the east is the staff breakroom and to the west is the kitchen. Heading south will take you upstairs.");
         Room kitchen = new Room("Kitchen", "Kitchen");
         Room gateway = new Room("Gateway", "You recognize the 3 men guarding the gate immediately as Art, Chet, and Hank. They hate you. Doesn't look like you're going to get out this way very easily.");
-        Item dagger = new Item("Dagger", "A small ornate dagger. Might fetch a good price in town.");
-        Item chocolates = new Item("Box of chocolates", "A big box of heart shaped chocolates. Might be Barb's favorite.");
+        Item dagger = new Item("dagger", "A small ornate dagger. Might fetch a good price in town.");
+        Item chocolates = new Item("box of chocolates", "A big box of heart shaped chocolates. I think I remember Barb saying these were her favorite.");
+
 
         public void Setup()
         {
@@ -114,6 +115,9 @@ namespace GrimtolIncorporated.Project
                         case "EAST":
                             Go("East");
                             break;
+                        default:
+                            Go("null");
+                            break;
 
                     }
                     break;
@@ -129,14 +133,32 @@ namespace GrimtolIncorporated.Project
                         case "CHOCOLATES":
                             Take(chocolates);
                             break;
+                        default:
+                            Console.WriteLine("That's not an item you can take.");
+                            break;
                     }
                     break;
                 case "use":
                 case "USE":
+                    switch (option)
+                    {
+                        case "dagger":
+                        case "DAGGER":
+                            UseItem("dagger");
+                            break;
+                        case "chocolates":
+                        case "CHOCOLATES":
+                            UseItem("chocolates");
+                            break;
+                        default:
+                            Console.WriteLine("That's not an item you can use.")
+                            break;
+                    }
                     break;
                 case "look":
                 case "LOOK":
-                    switch(option) {
+                    switch (option)
+                    {
                         case "dagger":
                         case "DAGGER":
                             LookItem(dagger);
@@ -144,6 +166,9 @@ namespace GrimtolIncorporated.Project
                         case "chocolates":
                         case "CHOCOLATES":
                             LookItem(chocolates);
+                            break;
+                        default:
+                            Console.WriteLine("That's not an item.");
                             break;
                     }
                     break;
@@ -180,7 +205,7 @@ namespace GrimtolIncorporated.Project
         public void Take(Item item)
         {
             CurrentPlayer.Inventory.Add(item);
-            Console.WriteLine($"You now have the {item}.");
+            Console.WriteLine($"You now have the {item.Name}.");
         }
 
         public void UseItem(string itemName)
