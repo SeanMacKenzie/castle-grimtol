@@ -13,11 +13,13 @@ namespace GrimtolIncorporated
             // int Selection = 0;
             bool Playing = true;
             Primary.Setup();
+            Primary.Start();
 
             while (Playing)
             {
-                Primary.Start();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 string choice = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Green;
                 if (choice == "quit" || choice == "QUIT")
                 {
                     Playing = false;
@@ -25,7 +27,13 @@ namespace GrimtolIncorporated
                 }
                 else if (choice == "help" || choice == "HELP")
                 {
-
+                    Console.Clear();
+                    Primary.Help();
+                }
+                else if (choice == "look" || choice == "LOOK")
+                {
+                    Console.Clear();
+                    Primary.Look();
                 }
                 else
                 {
