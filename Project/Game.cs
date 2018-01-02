@@ -218,7 +218,14 @@ namespace GrimtolIncorporated.Project
 
         public void LookItem(Item item)
         {
-            Console.WriteLine(item.Description);
+            if (CurrentPlayer.Inventory.Contains(item))
+            {
+                Console.WriteLine(item.Description);
+            }
+            else
+            {
+                Console.WriteLine("That's not an item you possess.");
+            }
         }
 
         public void Go(string direction)
