@@ -5,12 +5,12 @@ namespace GrimtolIncorporated
 {
     public class Program
     {
+
+
         public static void Main(string[] args)
         {
             Console.Clear();
             Game Primary = new Game();
-
-            // int Selection = 0;
             bool Playing = true;
             Primary.Setup();
             Primary.Start();
@@ -25,6 +25,10 @@ namespace GrimtolIncorporated
                     Playing = false;
                     Primary.Reset();
                 }
+                else if (choice == "yes" || choice == "YES")
+                {
+                    Primary.Start();
+                }
                 else if (choice == "help" || choice == "HELP")
                 {
                     Console.Clear();
@@ -35,9 +39,13 @@ namespace GrimtolIncorporated
                     Console.Clear();
                     Primary.Look();
                 }
-                else
+                else if (choice.Contains("look") || choice.Contains("take") || choice.Contains("use") || choice.Contains("go") || choice.Contains("LOOK") || choice.Contains("TAKE") || choice.Contains("USE") || choice.Contains("GO"))
                 {
                     Primary.HandleInput(choice);
+                }
+                else
+                {
+                    Console.WriteLine("I'm sorry, I don't know what you're trying to do. Please enter another command. Thanks.");
                 }
 
             }
