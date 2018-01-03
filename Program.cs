@@ -23,6 +23,7 @@ namespace GrimtolIncorporated
                 if (choice == "quit" || choice == "QUIT")
                 {
                     Playing = false;
+                    Console.WriteLine("Change of heart? You like emptying the Dark Lord's decorative turd basket? Oh well.");
                     Primary.Reset();
                 }
                 else if (choice == "yes" || choice == "YES")
@@ -38,6 +39,10 @@ namespace GrimtolIncorporated
                 {
                     Console.Clear();
                     Primary.Look();
+                }
+                else if (choice == "inventory" || choice == "INVENTORY")
+                {
+                    Primary.Inventory();
                 }
                 else if (choice.Contains("look") || choice.Contains("take") || choice.Contains("use") || choice.Contains("go") || choice.Contains("LOOK") || choice.Contains("TAKE") || choice.Contains("USE") || choice.Contains("GO"))
                 {

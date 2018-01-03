@@ -85,9 +85,14 @@ namespace GrimtolIncorporated.Project
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(CurrentRoom.Description);
             Console.ForegroundColor = ConsoleColor.Green;
+        }
 
-
-
+        public void Inventory()
+        {
+            for (int i = 0; i < CurrentPlayer.Inventory.Count; i++)
+            {
+                Console.WriteLine($"{CurrentPlayer.Inventory[i].Name}");
+            }
         }
 
         public void Start()
